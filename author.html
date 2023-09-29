@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Entry </title>
+</head>
+ 
+<body>
+    <h1>Author entry Yaswanth Kanakala!</h1>
+
+<h2>Getting input</h2>
+
+<form>
+    <label for="secretAuthor">The hidden author name</label>
+    <input type ="password" id="secretAuthor" name="secretAuthor" min=10 max=50 step=2 value="Dickens"> <br>
+
+    <label for="guessAuthor">Guess the author</label>
+    <input type ="text" id="guessAuthor" name="guessAuthor" > <br>
+
+    <input type="button" onclick="checkAuthor()" value="Check the guess">
+</form>
+
+<p id="result">Result score: </p>
+<div id="score">Good: 0 | Oops: 0</div>
+<script> 
+let good=0;
+let oops=0;
+function checkAuthor(){
+    console.log("Getting form values")
+    secretAuthor = document.getElementById("secretAuthor").value;
+     guessAuthor = document.getElementById("guessAuthor").value;
+     scoreElement = document.getElementById("score");
+    confirmed = confirm("Are these the values? "+secretAuthor+" and "+guessAuthor+"?")
+    
+    if(confirmed){
+        good++;
+        alert("You got it right!")
+    } else {
+        oops++;
+        alert("Sorry!")
+    }
+    scoreElement.innerHTML = `Good: ${good} | Oops: ${oops}`;
+}
+</script>
+
+</body>
+</html> 
