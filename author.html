@@ -45,24 +45,26 @@
         }
 
     </script>
-    <script>
-
-        <div id="imageContainer">
-        <img id="sliderImage" src="LONDON.jpeg" alt="City 1" width="100" height="100" onclick="selectImage()" >
-        </img>
    
 
-    </div>
+        <div id="imageContainer">
+
+        <img id="sliderImage" src="C:/Users/S567546/Documents/webapps-repos/44563-webapps-f23-assignment6-yeswanthkanakala07/LONDON.jpeg" alt="City 1" width="100" height="100" onclick="selectImage()" /> 
+    
+
+         </div>
+         <script>
         // Global variable to track the current image
         var useImage = 1;
 
         // Function to select the next image
-        function selectImage() {
+        function selectImage(){
+            var imageContainer = document.getElementById("imageContainer");
             var imageElement = document.getElementById("sliderImage");
 
             switch (useImage) {
                 case 1:
-                    imageElement.src = "KOLKATA.jpeg";
+                    imageElement.src = "KOLKATA.jpg";
                     useImage = 2;
                     break;
                 case 2:
