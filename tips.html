@@ -1,39 +1,80 @@
 <!DOCTYPE html>
 <html>
- 
+<head>
+    <title>Sample Tips</title>
+</head>
 <body>
+    <h2>Yaswanth Kanakala shows tip amounts</h2>
+    <form>
+        <label for="baseAmount"> Enter base amount: </label>
+        <input type="number" id="baseAmount" value=50> <br>
 
-<h2>Getting input</h2>
+        <label for="tipPerc">Enter the tip percent:</label>
+        <input type="number" id="tipPerc" value=15> <br>
 
-<form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+        <input type="button" onclick=" tips() " value="Show Tip"><br>
+    </form>
+    <p id="result">Tips are:</p>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    <form>
+        <input type="radio" id="op1" name="operation" value="sum" onclick="chooseOp()">
+        <label for="op1">Sum</label></br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
-</form>
+        <input type="radio" id="op2" name="operation" onclick="chooseOp()" value="difference">
+        <label for="op2">Diff</label></br>
+
+        <input type="radio" id="op3" name="operation" onclick="chooseOp()" value="product">
+        <label for="op3">mult</label></br>
+    </form>
+
+    <p id="res">Result will be displayed here.</p>
+
+    <script>
+
+        function tips() {
+            var baseAmount = parseFloat(document.getElementById("baseAmount").value);
+            var tipPerc = parseFloat(document.getElementById("tipPerc").value);
+
+            var myOutput = " ";
+
+            for (var i = 0; i < 5; i++) {
+                var tip = baseAmount * (tipPerc / 100);
+                myOutput += tipPerc + "% is " + tip.toFixed(2) + "; ";
+                tipPerc += 4;
+            }
+
+            document.getElementById("result").innerHTML = "Tips are: " + myOutput;
+        }
+
+        function chooseOp() {
+
+            var baseAmount = parseFloat(document.getElementById('baseAmount').value);
+            var tipPerc = parseFloat(document.getElementById('tipPerc').value);
 
 
-<p id="result">This text will be replaced </p>
+            var operation = document.querySelector('input[name="operation"]:checked').value;
 
-<script> 
+            var res;
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
+            switch (operation) {
+                case "sum":
+                    res = baseAmount + tipPerc;
+                    break;
+                case "difference":
+                    res = baseAmount - tipPerc;
+                    break;
+                case "product":
+                    res = baseAmount * tipPerc;
+                    break;
+                default:
+                    res = "Invalid operation";
+                    break;
+            }
+
+            document.getElementById("res").innerHTML = `${operation} of ${baseAmount} and ${tipPerc} is ${res}`;
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>
