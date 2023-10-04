@@ -43,6 +43,41 @@
             }
             scoreElement.innerHTML = `Good: ${good} | Oops: ${oops}`;
         }
+
+    </script>
+    <script>
+
+        <div id="imageContainer">
+        <img id="sliderImage" src="LONDON.jpeg" alt="City 1" width="100" height="100" onclick="selectImage()" >
+        </img>
+   
+
+    </div>
+        // Global variable to track the current image
+        var useImage = 1;
+
+        // Function to select the next image
+        function selectImage() {
+            var imageElement = document.getElementById("sliderImage");
+
+            switch (useImage) {
+                case 1:
+                    imageElement.src = "KOLKATA.jpeg";
+                    useImage = 2;
+                    break;
+                case 2:
+                    imageElement.src = "AMSTERDAM.jpeg";
+                    useImage = 3;
+                    break;
+                case 3:
+                    imageElement.src = "LONDON.jpeg"; // Wrap back to the first image
+                    useImage = 1;
+                    break;
+            }
+        }
+    
+ 
+
     </script>
 
 </body>
