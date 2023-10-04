@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Cruise Selection</title>
 </head>
+
 <body>
     <h1>Yaswanth Kanakala goes on a cruise</h1>
 
@@ -13,7 +15,16 @@
     </form>
 
     <input type="button" value="Select a cruise" onclick="selectCruise()">
-   <p id="result">Cruise selection will be displayed here.</p>
+    <p id="result">Cruise selection will be displayed here.</p>
+    <form>
+        <label for="numberOfDays">Enter the number of days:</label>
+        <input type="text" id="numberOfDays" value="7"><br>
+
+        <label for="cruisePrice">Enter price:</label>
+        <input type="text" id="cruisePrice" value="1000"><br>
+
+        <input type="button" value="Update the cruise" onclick="updateCruise()">
+    </form>
 
     <script>
 
@@ -27,6 +38,16 @@
 
             document.getElementById('result').innerHTML = JSON.stringify(my_cruise);
         }
+        function updateCruise() {
+            var numberOfDays = document.getElementById('numberOfDays').value;
+            var cruisePrice = document.getElementById('cruisePrice').value;
+
+            my_cruise.days = numberOfDays;
+            my_cruise.price = cruisePrice;
+
+            document.getElementById('result').innerHTML = JSON.stringify(my_cruise);
+        }
     </script>
 </body>
+
 </html>
